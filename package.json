@@ -28,7 +28,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/janis-r/quiver-react-suppor"
+    "url": "https://github.com/janis-r/quiver-react-support"
   },
   "dependencies": {
     "quiver-framework": "^0.7.1",
