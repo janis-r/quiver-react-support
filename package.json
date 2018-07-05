@@ -1,13 +1,13 @@
 {
   "name": "quiver-react-suppor",
   "description": "React support package for quiver-framework",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "scripts": {
     "export": "rimraf dist && tsc && copy README.md dist",
     "build": "npm run build:patch",
-    "build:patch": "npm run localTest && npm run export && npm version patch && copy package.json dist && npm publish dist",
-    "build:minor": "npm run localTest && npm run export && npm version minor && copy package.json dist && npm publish dist",
-    "build:major": "npm run localTest && npm run export && npm version major && copy package.json dist && npm publish dist",
+    "build:patch": "npm run test && npm run export && npm version patch && copy package.json dist && npm publish dist",
+    "build:minor": "npm run test && npm run export && npm version minor && copy package.json dist && npm publish dist",
+    "build:major": "npm run test && npm run export && npm version major && copy package.json dist && npm publish dist",
     "test": "mocha -r ts-node/register test/Tests.tsx",
     "lint": "tslint -t stylish src/**/*.ts test/**/*.ts",
     "lintFix": "tslint -t stylish --fix src/**/*.ts test/**/*.ts"
