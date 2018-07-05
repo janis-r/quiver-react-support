@@ -1,7 +1,7 @@
 {
   "name": "quiver-react-suppor",
   "description": "React support package for quiver-framework",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "scripts": {
     "export": "rimraf dist && tsc && copy README.md dist",
     "build": "npm run build:patch",
