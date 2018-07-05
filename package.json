@@ -1,16 +1,14 @@
 {
   "name": "quiver-react-suppor",
   "description": "React support package for quiver-framework",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "scripts": {
     "export": "rimraf dist && tsc && copy README.md dist",
     "build": "npm run build:patch",
     "build:patch": "npm run test && npm run export && npm version patch && copy package.json dist && npm publish dist",
     "build:minor": "npm run test && npm run export && npm version minor && copy package.json dist && npm publish dist",
     "build:major": "npm run test && npm run export && npm version major && copy package.json dist && npm publish dist",
-    "test": "mocha -r ts-node/register test/Tests.tsx",
-    "lint": "tslint -t stylish src/**/*.ts test/**/*.ts",
-    "lintFix": "tslint -t stylish --fix src/**/*.ts test/**/*.ts"
+    "test": "mocha -r ts-node/register test/Tests.tsx"
   },
   "license": "MIT",
   "contributors": [
@@ -28,7 +26,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/janis-r/quiver-react-suppor"
+    "url": "https://github.com/janis-r/quiver-react-support"
   },
   "dependencies": {
     "quiver-framework": "^0.7.1",
@@ -40,17 +38,14 @@
     "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/mocha": "2.2.41",
     "chai": "3.5.0",
-    "codecov": "2.2.0",
     "copy": "0.3.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "mocha": "3.3.0",
-    "mocha-lcov-reporter": "1.3.0",
+    "mocha": "^5.2.0",
     "mocha-typescript": "1.0.23",
     "react-dom": "^16.4.1",
-    "rimraf": "2.6.1",
+    "rimraf": "^2.6.1",
     "ts-node": "^7.0.0",
-    "tslint": "^5.2.0",
     "typescript": "^2.9.2"
   }
 }
