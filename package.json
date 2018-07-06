@@ -8,7 +8,7 @@
     "build:patch": "npm run test && npm run export && npm version patch && copy package.json dist && npm publish dist",
     "build:minor": "npm run test && npm run export && npm version minor && copy package.json dist && npm publish dist",
     "build:major": "npm run test && npm run export && npm version major && copy package.json dist && npm publish dist",
-    "test": "mocha -r ts-node/register test/Tests.tsx"
+    "test": "mocha -r ts-node/register test/Suites.ts"
   },
   "license": "MIT",
   "contributors": [

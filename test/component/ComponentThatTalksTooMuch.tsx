@@ -1,7 +1,6 @@
 import * as React from "react";
-import {Event, Inject} from "quiver-framework";
-import {Component} from "../../src/Component";
-import {InjectedService1} from "../service/InjectedService1";
+import {Event} from "quiver-framework";
+import {Component} from "../../src";
 
 export class ComponentThatTalksTooMuch extends Component {
 
@@ -32,4 +31,5 @@ export class ComponentThatTalksTooMuch extends Component {
 export enum EventType {
     First = "first",
     Second = "second",
-    Third = "third",}
+    Third = "third"
+}

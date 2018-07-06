@@ -1,5 +1,5 @@
 import * as React from "react";
-import {EventDispatcher, MediatorMap, Event, EventListener, EventMapping, Inject} from "quiver-framework";
+import {EventDispatcher, MediatorMap, Event, EventListener, EventMapping, Inject, Optional} from "quiver-framework";
 import {StaticInjector} from "./StaticInjector";
 
 /**
@@ -12,7 +12,9 @@ import {StaticInjector} from "./StaticInjector";
 export abstract class Component<P = any, S = any> extends React.Component<P, S> {
 
     @Inject()
+    @Optional()
     private __mediatorMap: MediatorMap;
+
     private __eventDispatcher = new EventDispatcher();
 
     constructor(props: P, context?: any) {
@@ -24,14 +26,18 @@ export abstract class Component<P = any, S = any> extends React.Component<P, S> 
      * Create any mediators for this component, if any, as  component is mounted.
      */
     componentWillMount() {
-        this.__mediatorMap.mediate(this);
+        if (this.__mediatorMap) {
+            this.__mediatorMap.mediate(this);
+        }
     }
 
     /**
      * Remove mediators and event listeners of a component as it's unmounted.
      */
     componentWillUnmount(): void {
-        this.__mediatorMap.unMediate(this);
+        if (this.__mediatorMap) {
+            this.__mediatorMap.unMediate(this);
+        }
         this.__eventDispatcher.removeAllEventListeners();
     }
 
