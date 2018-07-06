@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Inject, Optional} from "quiver-framework";
-import {Component} from "../../src/Component";
+import {Component} from "../../src";
 import {InjectedService1} from "../service/InjectedService1";
 import {InjectedService2} from "../service/InjectedService2";
 

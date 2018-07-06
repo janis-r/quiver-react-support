@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Inject} from "quiver-framework";
-import {Component} from "../../src/Component";
+import {Component} from "../../src";
 import {InjectedService2} from "../service/InjectedService2";
 
 export class ComponentWithMissingInjection extends Component {

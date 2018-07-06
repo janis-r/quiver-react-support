@@ -1,14 +1,14 @@
 {
   "name": "quiver-react-suppor",
   "description": "React support package for quiver-framework",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "scripts": {
     "export": "rimraf dist && tsc && copy README.md dist",
     "build": "npm run build:patch",
     "build:patch": "npm run test && npm run export && npm version patch && copy package.json dist && npm publish dist",
     "build:minor": "npm run test && npm run export && npm version minor && copy package.json dist && npm publish dist",
     "build:major": "npm run test && npm run export && npm version major && copy package.json dist && npm publish dist",
-    "test": "mocha -r ts-node/register test/Tests.tsx"
+    "test": "mocha -r ts-node/register test/Suites.ts"
   },
   "license": "MIT",
   "contributors": [
