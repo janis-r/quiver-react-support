@@ -1,4 +1,4 @@
-import {ClassType, Injector} from "quiver-framework";
+import { ClassType, Injector } from "quiver-framework";
 
 /**
  * Static provider of system injections which will be used as point of retrieval for system service injections.

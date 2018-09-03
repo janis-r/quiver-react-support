@@ -1,6 +1,6 @@
+import { Event, EventDispatcher, EventListener, EventMapping, Inject, MediatorMap, Optional } from "quiver-framework";
 import * as React from "react";
-import {EventDispatcher, MediatorMap, Event, EventListener, EventMapping, Inject, Optional} from "quiver-framework";
-import {StaticInjector} from "./StaticInjector";
+import { StaticInjector } from "./StaticInjector";
 
 /**
  * Base class for any React component that should be part of Quiver framework and receive injections and be part

@@ -1,6 +1,6 @@
+import { Event } from "quiver-framework";
 import * as React from "react";
-import {Event} from "quiver-framework";
-import {Component} from "../../src";
+import { Component } from "../../src";
 
 export class ComponentThatTalksTooMuch extends Component {
 
@@ -8,21 +8,21 @@ export class ComponentThatTalksTooMuch extends Component {
 
     public eventsDelivered: number = 0;
 
-    constructor(props:any) {
+    constructor(props: any) {
         super(props);
         ComponentThatTalksTooMuch.instance = this;
     }
 
-    render () {
+    render() {
 
         this.dispatchEvent(EventType.First);
-        this.eventsDelivered ++;
+        this.eventsDelivered++;
 
         this.dispatchEvent(EventType.Second, 'Wild, untyped data');
-        this.eventsDelivered ++;
+        this.eventsDelivered++;
 
         this.dispatchEvent(new Event(EventType.Third, 'Wild, untyped data'));
-        this.eventsDelivered ++;
+        this.eventsDelivered++;
 
         return <div>Foo bar lee!</div>
     }

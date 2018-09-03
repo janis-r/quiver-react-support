@@ -1,17 +1,17 @@
-import "reflect-metadata";
-import * as React from "react";
-import {suite, test} from "mocha-typescript";
-import {expect} from "chai";
+import { expect } from "chai";
 import * as Enzyme from "enzyme";
+import { shallow } from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
-import {shallow} from "enzyme";
-import {ContextLifecycleEvent, Injector, MediatorMap, WebApplicationContext} from "quiver-framework";
-import {StaticInjector} from "../src";
-import {ComponentThatTalksTooMuch} from "./component/ComponentThatTalksTooMuch";
-import {ComponentWithInjection} from "./component/ComponentWithInjection";
-import {MediatorThatHearsItAll} from "./mediator/MediatorThatHearsItAll";
-import {SimpleMediator} from "./mediator/SimpleMediator";
-import {InjectedService1} from "./service/InjectedService1";
+import { suite, test } from "mocha-typescript";
+import { Injector, MediatorMap } from "quiver-framework";
+import * as React from "react";
+import "reflect-metadata";
+import { ApplicationContext, StaticInjector } from "../src";
+import { ComponentThatTalksTooMuch } from "./component/ComponentThatTalksTooMuch";
+import { ComponentWithInjection } from "./component/ComponentWithInjection";
+import { MediatorThatHearsItAll } from "./mediator/MediatorThatHearsItAll";
+import { SimpleMediator } from "./mediator/SimpleMediator";
+import { InjectedService1 } from "./service/InjectedService1";
 
 /**
  * Test if mediators are created for component and they can actually talk to each other
@@ -25,20 +25,11 @@ export class TestMediators {
 
     private injector: Injector;
 
-    before(): Promise<void> {
-
-        const context = new WebApplicationContext();
-        this.injector = context.injector;
-
+    before(): void {
         delete StaticInjector['instance']; // This illustrates why singletons are evil - in perfect world this should never be done!
-        new StaticInjector(this.injector);
 
-        return new Promise<void>(
-            resolve => {
-                context.listenOnce(ContextLifecycleEvent.POST_INITIALIZE, () => resolve());
-                context.initialize();
-            }
-        );
+        const {injector} = new ApplicationContext();
+        this.injector = injector;
     }
 
     @test("React component will receive mediator and it will actually work")
