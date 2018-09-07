@@ -12,6 +12,9 @@ export class ComponentWithMissingInjection extends Component {
 
     constructor(props:any) {
         super(props);
+
+        console.log('----', this.service)
+
         ComponentWithMissingInjection.instance = this;
     }
 

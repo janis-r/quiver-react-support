@@ -1,3 +1,3 @@
 export * from "./Component";
-export * from "./ReactApplicationContext";
+export * from "./ApplicationContext";
 export * from "./StaticInjector";

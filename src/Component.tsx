@@ -8,6 +8,7 @@ import { StaticInjector } from "./StaticInjector";
  * (This component is proper implementation of EventDispatcher implemented by composition so it can communicate
  * with Mediator instances.)
  * @author Jānis Radiņš
+ * @deprecated React.Component with @InjectionClient() should be used instead. This class is kept alive only for a little while.
  */
 export abstract class Component<P = any, S = any> extends React.Component<P, S> {
 

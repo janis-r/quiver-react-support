@@ -23,13 +23,15 @@ export class TestMediators {
         Enzyme.configure({ adapter: new Adapter() });
     }
 
+    private context: ApplicationContext;
     private injector: Injector;
 
     before(): void {
-        delete StaticInjector['instance']; // This illustrates why singletons are evil - in perfect world this should never be done!
+        delete StaticInjector['instance'];
+        this.context = new ApplicationContext();
+        this.context.initialize();
 
-        const {injector} = new ApplicationContext();
-        this.injector = injector;
+        this.injector = this.context.injector;
     }
 
     @test("React component will receive mediator and it will actually work")

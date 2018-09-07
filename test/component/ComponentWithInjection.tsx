@@ -3,7 +3,7 @@ import {Inject} from "quiver-framework";
 import {Component} from "../../src";
 import {InjectedService1} from "../service/InjectedService1";
 
-export class ComponentWithInjection extends Component {
+export class ComponentWithInjection extends Component<{}, {}> {
 
     public static instance: ComponentWithInjection;
 

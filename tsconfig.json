@@ -10,8 +10,13 @@
     "sourceMap": false,
     "declaration": true,
     "outDir": "dist",
-    "lib": ["es2015", "dom"],
-    "jsx": "react"
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "jsx": "react",
+    "noImplicitAny": true,
+    "strictNullChecks": true
   },
   "include": [
     "./src/*"

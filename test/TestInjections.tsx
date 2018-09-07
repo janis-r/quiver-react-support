@@ -26,7 +26,7 @@ export class TestInjections {
     private context: ApplicationContext;
 
     before(): void {
-        delete StaticInjector['instance']; // This illustrates why singletons are evil - in perfect world this should never be done!
+        delete StaticInjector['instance'];
         this.context = new ApplicationContext();
         this.context.initialize();
     }
@@ -49,6 +49,8 @@ export class TestInjections {
         expect(
             () => {
                 wrapper = shallow(<ComponentWithMissingInjection />);
+                console.log('>> wrapper', wrapper)
+
                 wrapper.unmount();
             },
             "Requiring missing injection should throw error"
