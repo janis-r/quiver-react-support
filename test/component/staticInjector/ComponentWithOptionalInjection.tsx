@@ -1,8 +1,8 @@
 import { Inject, Optional } from "quiver-framework";
 import * as React from "react";
-import { Component } from "../../src";
-import { InjectedService1 } from "../service/InjectedService1";
-import { InjectedService2 } from "../service/InjectedService2";
+import { Component } from "../../../src/index";
+import { InjectedService1 } from "../../service/InjectedService1";
+import { InjectedService2 } from "../../service/InjectedService2";
 
 export class ComponentWithOptionalInjection extends Component {
 

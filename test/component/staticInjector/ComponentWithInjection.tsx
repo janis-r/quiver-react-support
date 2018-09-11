@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Inject} from "quiver-framework";
-import {Component} from "../../src";
-import {InjectedService1} from "../service/InjectedService1";
+import {Component} from "../../../src/index";
+import {InjectedService1} from "../../service/InjectedService1";
 
 export class ComponentWithInjection extends Component<{}, {}> {
 

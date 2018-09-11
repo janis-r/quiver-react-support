@@ -1,5 +1,5 @@
 import { Event, EventListener, Injectable, Mediator } from "quiver-framework";
-import { ComponentThatTalksTooMuch, EventType } from "../component/ComponentThatTalksTooMuch";
+import { ComponentThatTalksTooMuch, EventType } from "../component/staticInjector/ComponentThatTalksTooMuch";
 
 @Injectable()
 export class MediatorThatHearsItAll extends Mediator {

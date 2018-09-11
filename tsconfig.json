@@ -1,22 +1,29 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "emitDecoratorMetadata": true,
+
     "experimentalDecorators": true,
-    "preserveConstEnums": true,
-    "moduleResolution": "node",
-    "removeComments": false,
-    "sourceMap": false,
-    "declaration": true,
-    "outDir": "dist",
-    "lib": [
-      "es2015",
-      "dom"
-    ],
+    "emitDecoratorMetadata": true,
+
+    "baseUrl": ".",
+    "outDir": "build/dist",
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "allowJs": true,
     "jsx": "react",
-    "noImplicitAny": true,
-    "strictNullChecks": true
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
+
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false
   },
   "include": [
     "./src/*"

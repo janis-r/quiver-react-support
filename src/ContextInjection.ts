@@ -5,12 +5,13 @@ import { Injector } from "quiver-framework";
 let context: Context<Injector>;
 
 export const configureInjector = (injector: Injector): void => {
-    // if (context) {
-    //     throw new Error("Master injector can be configured only once!");
-    // }
+
+    console.log(">> configureInjector", injector['MASTER_SEAL_KEY'])
+
+    if (context) {
+        throw new Error("Master injector can be configured only once!");
+    }
     context = React.createContext(injector);
 };
 
-export const getInjectionContext = (): Context<Injector> => {
-    return context;
-};
+export const ContextInjection = React.createContext(new Injector());

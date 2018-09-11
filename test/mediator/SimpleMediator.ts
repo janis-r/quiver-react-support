@@ -1,5 +1,5 @@
 import {Injectable, Mediator} from "quiver-framework";
-import {ComponentWithInjection} from "../component/ComponentWithInjection";
+import {ComponentWithInjection} from "../component/staticInjector/ComponentWithInjection";
 
 @Injectable()
 export class SimpleMediator extends Mediator {

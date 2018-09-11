@@ -1,5 +1,5 @@
 import { WebApplicationContext } from "quiver-framework";
-import {configureInjector} from "./injectionContext";
+import {configureInjector} from "./ContextInjection";
 import {StaticInjector} from "./StaticInjector";
 
 /**

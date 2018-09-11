@@ -8,7 +8,8 @@
     "build:patch": "npm run test && npm run export && npm version patch && copy package.json dist && npm publish dist",
     "build:minor": "npm run test && npm run export && npm version minor && copy package.json dist && npm publish dist",
     "build:major": "npm run test && npm run export && npm version major && copy package.json dist && npm publish dist",
-    "test": "mocha -r ts-node/register test/Suites.ts"
+    "test": "mocha -r ts-node/register test/Suites.ts",
+    "start": "react-scripts-ts start"
   },
   "license": "MIT",
   "contributors": [
@@ -29,7 +30,7 @@
     "url": "https://github.com/janis-r/quiver-react-support"
   },
   "dependencies": {
-    "quiver-framework": "^0.7.1",
+    "quiver-framework": "^0.7.2-0",
     "react": "^16.4.1"
   },
   "devDependencies": {
@@ -43,7 +44,8 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "mocha": "^5.2.0",
     "mocha-typescript": "1.0.23",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.5.0",
+    "react-scripts-ts": "^2.17.0",
     "rimraf": "^2.6.1",
     "ts-node": "^7.0.0",
     "typescript": "^2.9.2"

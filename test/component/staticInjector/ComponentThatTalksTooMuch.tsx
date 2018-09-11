@@ -1,6 +1,6 @@
 import { Event } from "quiver-framework";
 import * as React from "react";
-import { Component } from "../../src";
+import { Component } from "../../../src/index";
 
 export class ComponentThatTalksTooMuch extends Component {
 
