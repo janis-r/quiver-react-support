@@ -6,7 +6,7 @@ import * as Enzyme from "enzyme";
 import {shallow, ShallowWrapper} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import {Injector} from "quiver-framework";
-import {StaticInjector} from "../src";
+import {MasterInjector} from "../src";
 import {InjectedService1} from "./service/InjectedService1";
 import {InjectedService2} from "./service/InjectedService2";
 import {ComponentWithInjection} from "./component/ComponentWithInjection";
@@ -26,9 +26,8 @@ export class TestInjections {
     private injector: Injector;
 
     before(): void {
-        this.injector = new Injector();
-        delete StaticInjector['instance']; // This illustrates why singletons are evil - in perfect world this should never be done!
-        new StaticInjector(this.injector);
+        MasterInjector.reset(new Injector());
+        this.injector = MasterInjector.injector;
     }
 
     @test("React component can receive injections")

@@ -5,13 +5,13 @@ import {expect} from "chai";
 import * as Enzyme from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import {shallow} from "enzyme";
-import {ContextLifecycleEvent, Injector, MediatorMap, WebApplicationContext} from "quiver-framework";
-import {StaticInjector} from "../src";
+import {Injector, MediatorMap} from "quiver-framework";
 import {ComponentThatTalksTooMuch} from "./component/ComponentThatTalksTooMuch";
 import {ComponentWithInjection} from "./component/ComponentWithInjection";
 import {MediatorThatHearsItAll} from "./mediator/MediatorThatHearsItAll";
 import {SimpleMediator} from "./mediator/SimpleMediator";
 import {InjectedService1} from "./service/InjectedService1";
+import {ApplicationContext} from "../src/ApplicationContext";
 
 /**
  * Test if mediators are created for component and they can actually talk to each other
@@ -25,20 +25,8 @@ export class TestMediators {
 
     private injector: Injector;
 
-    before(): Promise<void> {
-
-        const context = new WebApplicationContext();
-        this.injector = context.injector;
-
-        delete StaticInjector['instance']; // This illustrates why singletons are evil - in perfect world this should never be done!
-        new StaticInjector(this.injector);
-
-        return new Promise<void>(
-            resolve => {
-                context.listenOnce(ContextLifecycleEvent.POST_INITIALIZE, () => resolve());
-                context.initialize();
-            }
-        );
+    before(): void {
+        this.injector = new ApplicationContext().injector;
     }
 
     @test("React component will receive mediator and it will actually work")

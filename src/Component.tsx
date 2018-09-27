@@ -1,6 +1,6 @@
 import * as React from "react";
 import {EventDispatcher, MediatorMap, Event, EventListener, EventMapping, Inject, Optional} from "quiver-framework";
-import {StaticInjector} from "./StaticInjector";
+import {MasterInjector} from "./MasterInjector";
 
 /**
  * Base class for any React component that should be part of Quiver framework and receive injections and be part
@@ -19,7 +19,7 @@ export abstract class Component<P = any, S = any> extends React.Component<P, S> 
 
     constructor(props: P, context?: any) {
         super(props, context);
-        StaticInjector.injector.injectInto(this);
+        MasterInjector.injector.injectInto(this);
     }
 
     /**
