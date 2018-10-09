@@ -12,7 +12,7 @@ export const withMasterInjections = <TInjectedProps, TNeedsProps>(component: Com
     (injectorToProps: (injector: Injector) => TInjectedProps): ComponentType<TNeedsProps> =>
         class AdHoc extends React.Component<TNeedsProps, {}> {
             render() {
-                const componentProps = {... this.props as any};
+                const componentProps = {... this.props as any}; //TODO: Fix it somehow without "any"!
                 if (injectorToProps) {
                     const injectedProps = injectorToProps(MasterInjector.injector);
                     Object.keys(injectedProps).forEach(key => componentProps[key] = injectedProps[key]);

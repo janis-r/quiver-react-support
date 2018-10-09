@@ -9,11 +9,14 @@
     "removeComments": false,
     "sourceMap": false,
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "build/dist",
     "lib": ["es2015", "dom"],
     "jsx": "react"
   },
   "include": [
     "./src/*"
+  ],
+  "exclude": [
+    "./src/debug.tsx"
   ]
 }

@@ -1,22 +1,20 @@
 {
   "name": "quiver-react-support",
+  "version": "0.2.1",
   "description": "React support package for quiver-framework",
-  "version": "0.2.0",
+  "main": "dist/index.js",
   "scripts": {
-    "export": "rimraf dist && tsc && copy README.md dist",
-    "build": "npm run build:patch",
-    "build:patch": "npm run test && npm run export && npm version patch && copy package.json dist && npm publish dist",
-    "build:minor": "npm run test && npm run export && npm version minor && copy package.json dist && npm publish dist",
-    "build:major": "npm run test && npm run export && npm version major && copy package.json dist && npm publish dist",
-    "test": "mocha -r ts-node/register test/Suites.ts"
+    "test": "mocha -r ts-node/register test/Suites.ts",
+    "prepare-build": "npm run test && rimraf build && tsc && copy README.md build",
+    "publish-dev": "npm run prepare-build && ts-node export-package && npm publish build --tag dev",
+    "publish-patch": "npm run prepare-build && npm version patch && ts-node export-package && npm publish build",
+    "publish-minor": "npm run prepare-build && npm version minor && ts-node export-package && npm publish build",
+    "publish-major": "npm run prepare-build && npm version major && ts-node export-package && npm publish build"
   },
-  "license": "MIT",
-  "contributors": [
-    {
-      "name": "Jānis Radiņš",
-      "email": "jr@janisradins.com"
-    }
-  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janis-r/quiver-react-support"
+  },
   "keywords": [
     "react",
     "dependency injection",
@@ -24,13 +22,11 @@
     "mediator map",
     "event dispatcher"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/janis-r/quiver-react-support"
-  },
+  "author": "Jānis Radiņš",
+  "license": "ISC",
   "dependencies": {
     "quiver-framework": "^0.7.1",
-    "react": "^16.4.1"
+    "react": "16.4.1"
   },
   "devDependencies": {
     "@types/chai": "3.5.2",
@@ -46,6 +42,6 @@
     "react-dom": "^16.4.1",
     "rimraf": "^2.6.1",
     "ts-node": "^7.0.0",
-    "typescript": "^2.9.2"
+    "typescript": "^3.1.1"
   }
 }
