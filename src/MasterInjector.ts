@@ -6,15 +6,7 @@ import {ClassType, Injector} from "quiver-framework";
  */
 export class MasterInjector {
 
-    private static instance: MasterInjector;
-
-    /**
-     * Check if master injector is configured and ready to provide service
-     * @returns {boolean}
-     */
-    static get configured():  boolean {
-        return !!MasterInjector.instance;
-    }
+    private static _injector: Injector;
 
     /**
      * Get injection mapped by requested type
@@ -22,10 +14,19 @@ export class MasterInjector {
      * @returns {T}
      */
     static get<T>(type: ClassType<T>): T {
-        if (!MasterInjector.instance) {
-            throw new Error('StaticInjector is not configured - no injector is set.');
+        const {_injector: injector} = MasterInjector;
+        if (!injector) {
+            throw new Error("StaticInjector is not configured - no injector is set.");
         }
-        return MasterInjector.instance.injector.get(type);
+        return injector.get(type);
+    }
+
+    /**
+     * Check if master injector is configured and ready to provide service
+     * @returns {boolean}
+     */
+    static get configured():  boolean {
+        return !!MasterInjector._injector;
     }
 
     /**
@@ -33,7 +34,11 @@ export class MasterInjector {
      * @returns {Injector}
      */
     static get injector(): Injector {
-        return MasterInjector.instance.injector;
+        const {_injector: injector} = MasterInjector;
+        if (!injector) {
+            throw new Error("StaticInjector is not configured - no injector is set.");
+        }
+        return injector;
     }
 
     /**
@@ -41,23 +46,11 @@ export class MasterInjector {
      * @param {Injector} injector
      */
     static reset(injector: Injector): void {
-        if (!MasterInjector.instance) {
-            new MasterInjector(injector);
-        } else {
-            MasterInjector.instance.injector = injector;
-        }
+        MasterInjector._injector = injector;
     }
 
-    /**
-     * Initialize instance
-     * @param {Injector} injector Default master injector value
-     */
-    constructor(private injector: Injector) {
-        if (MasterInjector.instance) {
-            throw new Error('Singleton instance is already set!');
-        }
-
-        MasterInjector.instance = this;
+    private constructor() {
+        throw new Error("This class should have no instance!");
     }
 
 }
