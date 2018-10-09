@@ -9,8 +9,13 @@ import {MasterInjector} from "./MasterInjector";
  */
 export class ApplicationContext extends WebApplicationContext {
 
-    constructor() {
+    /**
+     * Create new  React application context
+     * @param modules A list of app modules to enable in context
+     */
+    constructor(... modules: any[]) {
         super();
+        this.configure(...modules);
         MasterInjector.reset(this.injector);
         this.initialize();
     }
