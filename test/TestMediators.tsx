@@ -3,15 +3,15 @@ import * as React from "react";
 import {suite, test} from "mocha-typescript";
 import {expect} from "chai";
 import * as Enzyme from "enzyme";
-import * as Adapter from "enzyme-adapter-react-16";
 import {shallow} from "enzyme";
+import * as Adapter from "enzyme-adapter-react-16";
 import {Injector, MediatorMap} from "quiver-framework";
 import {ComponentThatTalksTooMuch} from "./component/ComponentThatTalksTooMuch";
 import {ComponentWithInjection} from "./component/ComponentWithInjection";
 import {MediatorThatHearsItAll} from "./mediator/MediatorThatHearsItAll";
 import {SimpleMediator} from "./mediator/SimpleMediator";
 import {InjectedService1} from "./service/InjectedService1";
-import {ApplicationContext} from "../src/application/ApplicationContext";
+import {ApplicationContext} from "../src";
 
 /**
  * Test if mediators are created for component and they can actually talk to each other

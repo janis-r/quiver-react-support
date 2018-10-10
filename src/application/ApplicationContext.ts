@@ -9,7 +9,7 @@ import {ApplicationStateEvent} from "./ApplicationStateEvent";
  * class will be able to reach it.
  */
 export class ApplicationContext extends WebApplicationContext {
-    private initializationTimeout: number | undefined;
+    private configureTimeout: number | undefined;
 
     /**
      * Create new React application context
@@ -18,26 +18,24 @@ export class ApplicationContext extends WebApplicationContext {
     constructor(... modules: any[]) {
         super();
         this.configure(...modules);
-        MasterInjector.reset(this.injector);
+        super.initialize();
 
-        this.initializationTimeout = setTimeout(() => this.initialize());
+        MasterInjector.reset(this.injector);
+        this.configureTimeout = setTimeout(() => this.configureApp());
     }
 
     /**
-     * Initialize context.
-     * This method will be auto invoked within shortest timeout after Context is created, created to let finish
-     * configuration before, we're really initializing.
-     * Also, some might want to get to know when exactly context is Configured and Initialized and if so, it would
-     * alright to invoke this method manually and get notified via Promise and that even won't make a double call
-     * to this method.
+     * Launch application configuration notifications.
+     * This method will be auto invoked within shortest timeout after Context is created to notify user defined modules
+     * on when it's right time to do configuration and when we can be sure that configuration is done.
+     * Also, some might want to get to know when exactly app is Configured and Initialized and if so, it would be
+     * alright to invoke this method manually and get notified via Promise.
      * @returns {Promise<void>}
      */
-    async initialize(): Promise<void> {
-        super.initialize();
-
-        if (this.initializationTimeout) {
-            clearTimeout(this.initializationTimeout);
-            this.initializationTimeout = undefined;
+    async configureApp(): Promise<void> {
+        if (this.configureTimeout) {
+            clearTimeout(this.configureTimeout);
+            this.configureTimeout = undefined;
         }
 
         const configureEvent = new ApplicationStateEvent(ApplicationStateEvent.CONFIGURE);
