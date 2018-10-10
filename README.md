@@ -1,6 +1,9 @@
+# React support package for Quiver framework
+
 Extending [Quiver framework](https://www.npmjs.com/package/quiver-framework) in order to bring support for 
-[Dependency injection](https://en.wikipedia.org/wiki/Dependency_injection), View-models of 
-[MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) and event driven architecture into **React**.
+[Dependency injection](https://en.wikipedia.org/wiki/Dependency_injection), [View-models](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) of 
+MVVM and event driven architecture into 
+[React](https://reactjs.org).
 
 ### How to use Injector
 
@@ -9,7 +12,7 @@ Configure application context:
 ```javascript
 import {ApplicationContext} from "quiver-react-support";
 
-const {injector} = new ApplicationContext();
+const {injector} = new ApplicationContext(/*List of app modules, if any go here*/);
 /**
  * Create service mapping that'll create new instance of a service for each consumer
  */

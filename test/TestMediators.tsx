@@ -11,7 +11,7 @@ import {ComponentWithInjection} from "./component/ComponentWithInjection";
 import {MediatorThatHearsItAll} from "./mediator/MediatorThatHearsItAll";
 import {SimpleMediator} from "./mediator/SimpleMediator";
 import {InjectedService1} from "./service/InjectedService1";
-import {ApplicationContext} from "../src/ApplicationContext";
+import {ApplicationContext} from "../src/application/ApplicationContext";
 
 /**
  * Test if mediators are created for component and they can actually talk to each other
