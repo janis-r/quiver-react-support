@@ -3,15 +3,16 @@
   "version": "0.2.4-0",
   "description": "React support package for quiver-framework",
   "main": "dist/es5/index.js",
-  "typings": "dist/es5/index.d.ts",
   "jsnext:main": "dist/esnext/index.js",
+  "typings": "dist/es5/index.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register test/Suites.ts",
-    "prepare-build": "npm run test && rimraf build && tsc && tsc -p . --outDir build/dist/esnext --module es2015 --target esnext  && copy README.md build",
-    "publish-dev": "npm run prepare-build && npm version prepatch && ts-node export-package && npm publish build --tag dev",
+    "transpile": "tsc && tsc -p . --outDir build/dist/esnext --module es2015 --target esnext",
+    "prepare-build": "npm run test && rimraf build && npm run transpile && copy README.md build",
+    "publish-prepatch": "npm run prepare-build && npm version prepatch && ts-node export-package && npm publish build --tag dev",
     "publish-patch": "npm run prepare-build && npm version patch    && ts-node export-package && npm publish build",
     "publish-minor": "npm run prepare-build && npm version minor    && ts-node export-package && npm publish build",
-    "publish-major": "npm run prepare-build && npm version major    s&& ts-node export-package && npm publish build",
+    "publish-major": "npm run prepare-build && npm version major    && ts-node export-package && npm publish build",
     "foo": "ts-node export-package dev"
   },
   "repository": {
@@ -29,7 +30,7 @@
   "license": "ISC",
   "dependencies": {
     "quiver-framework": "^0.7.1",
-    "react": "16.4.1"
+    "react": "^16.0.0"
   },
   "devDependencies": {
     "@types/chai": "3.5.2",
@@ -42,7 +43,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "mocha": "^5.2.0",
     "mocha-typescript": "1.0.23",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.0.0",
     "rimraf": "^2.6.1",
     "ts-node": "^7.0.0",
     "typescript": "^3.1.1"
