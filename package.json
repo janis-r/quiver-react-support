@@ -1,18 +1,18 @@
 {
   "name": "quiver-react-support",
-  "version": "0.2.4-0",
+  "version": "0.2.4",
   "description": "React support package for quiver-framework",
   "main": "dist/es5/index.js",
   "jsnext:main": "dist/esnext/index.js",
   "typings": "dist/es5/index.d.ts",
   "scripts": {
-    "test"            : "mocha -r ts-node/register test/Suites.ts",
-    "transpile"       : "tsc && tsc -p . --outDir build/dist/esnext --module es2015 --target esnext",
-    "prepare-build"   : "npm run test && rimraf build && npm run transpile && copy README.md build",
+    "test": "mocha -r ts-node/register test/Suites.ts",
+    "transpile": "tsc && tsc -p . --outDir build/dist/esnext --module es2015 --target esnext",
+    "prepare-build": "npm run test && rimraf build && npm run transpile && copy README.md build",
     "publish-prepatch": "npm run prepare-build && npm version prepatch && ts-node export-package && npm publish build --tag dev",
-    "publish-patch"   : "npm run prepare-build && npm version patch    && ts-node export-package && npm publish build",
-    "publish-minor"   : "npm run prepare-build && npm version minor    && ts-node export-package && npm publish build",
-    "publish-major"   : "npm run prepare-build && npm version major    && ts-node export-package && npm publish build"
+    "publish-patch": "npm run prepare-build && npm version patch    && ts-node export-package && npm publish build",
+    "publish-minor": "npm run prepare-build && npm version minor    && ts-node export-package && npm publish build",
+    "publish-major": "npm run prepare-build && npm version major    && ts-node export-package && npm publish build"
   },
   "repository": {
     "type": "git",
