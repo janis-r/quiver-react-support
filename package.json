@@ -1,6 +1,6 @@
 {
   "name": "quiver-react-support",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "React support package for quiver-framework",
   "main": "dist/es5/index.js",
   "jsnext:main": "dist/esnext/index.js",
