@@ -1,4 +1,4 @@
-import {WebApplicationContext} from "quiver-framework";
+import {EventDispatcher, WebApplicationContext} from "quiver-framework";
 import {MasterInjector} from "../MasterInjector";
 import {ApplicationStateEvent} from "./ApplicationStateEvent";
 
@@ -38,12 +38,14 @@ export class ApplicationContext extends WebApplicationContext {
             this.configureTimeout = undefined;
         }
 
+        const eventDispatcher = this.injector.get(EventDispatcher);
+
         const configureEvent = new ApplicationStateEvent(ApplicationStateEvent.CONFIGURE);
-        this.injector.dispatchEvent(configureEvent);
+        eventDispatcher.dispatchEvent(configureEvent);
         await configureEvent.stateIsComplete();
 
         const initializedEvent = new ApplicationStateEvent(ApplicationStateEvent.INITIALIZED);
-        this.injector.dispatchEvent(initializedEvent);
+        eventDispatcher.dispatchEvent(initializedEvent);
         await initializedEvent.stateIsComplete();
     }
 }

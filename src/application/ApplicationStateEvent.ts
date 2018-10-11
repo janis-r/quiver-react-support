@@ -11,13 +11,13 @@ export class ApplicationStateEvent extends Event {
      * indicates last moment to apply any configuration to be done before we're taking off
      * @type {string}
      */
-    static readonly CONFIGURE = "configure";
+    static readonly CONFIGURE = "configure-qreact-app";
 
     /**
      * Indicates that application initialization is complete and it's launched
      * @type {string}
      */
-    static readonly INITIALIZED = "initialized";
+    static readonly INITIALIZED = "qreact-app-initialized";
 
     private awaitPromises: Promise<void>[] = [];
 
