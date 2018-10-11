@@ -7,6 +7,12 @@ import {Event} from "quiver-framework";
  */
 export class ApplicationStateEvent extends Event {
     /**
+     * Dispatched at start of configuration process to maake preparations necessary to application configuration
+     * @type {string}
+     */
+    static readonly PREPARE = "prepare-qreact-app";
+
+    /**
      * Dispatched as application configuration is done but actual functionality is still not launched and
      * indicates last moment to apply any configuration to be done before we're taking off
      * @type {string}

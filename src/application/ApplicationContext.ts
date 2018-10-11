@@ -40,6 +40,10 @@ export class ApplicationContext extends WebApplicationContext {
 
         const eventDispatcher = this.injector.get(EventDispatcher);
 
+        const prepareEvent = new ApplicationStateEvent(ApplicationStateEvent.PREPARE);
+        eventDispatcher.dispatchEvent(prepareEvent);
+        await prepareEvent.stateIsComplete();
+
         const configureEvent = new ApplicationStateEvent(ApplicationStateEvent.CONFIGURE);
         eventDispatcher.dispatchEvent(configureEvent);
         await configureEvent.stateIsComplete();
